@@ -1,32 +1,31 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { Home } from "./pages/Home";
+
 import { AnimalList } from "./pages/AnimalList";
-import { AnimalView } from "./pages/AnimalView";
+
 import { Error } from "./pages/Error";
 import { RouterProvider } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
+import { Animal } from './components/Animal';
+import { AnimalView } from './pages/AnimalView';
 
 const router = createBrowserRouter([
 
+
+
   {
     path: "/",
-    element: <Home></Home>,
+    element: <AnimalList></AnimalList>,
     errorElement: <Error></Error>
 
   },
 
-  {
-    path: "/animallist",
-    element: <AnimalList></AnimalList>,
-
-  },
-
 
   {
-    path: "/albumlist/:id",
+    path: "/:id",
     element: <AnimalView></AnimalView>
+
 
   },
 
