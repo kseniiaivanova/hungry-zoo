@@ -1,4 +1,5 @@
 import "../components/Animal.scss"
+import { SyntheticEvent } from "react";
 
 export interface IAnimal {
     id: number,
@@ -33,11 +34,19 @@ export const Animal = ({
     fullDescription = false
 
 }: IAnimalProps) => {
+
+
+    const addImageFallback = (event: SyntheticEvent<HTMLImageElement>) => {
+        event.currentTarget.src = "https://www.dropbox.com/s/afdbyaej47bo9oi/animals.jpg?raw=1";
+    };
+
+
+
     if (fullDescription === false) {
         return (
             <>  <div className="animal">
                 <h2>{name}</h2>
-                <img src={imageUrl} alt={name} />
+                <img src={imageUrl} alt={name} onError={addImageFallback} />
                 <p>{shortDescription}</p>
 
             </div>
