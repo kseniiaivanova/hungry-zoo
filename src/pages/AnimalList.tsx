@@ -24,9 +24,9 @@ export const AnimalList = () => {
             <Navbar></Navbar>
 
             {animals.map((animal, index) => (
-                <>
+                <>   <Animal {...animal}></Animal>
                     <Link key={index} to={animal.id.toString()}>
-                        <Animal {...animal}></Animal>
+                        <p>Lä   s mer</p>
                     </Link>
 
                 </>
