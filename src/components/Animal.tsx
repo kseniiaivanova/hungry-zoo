@@ -38,12 +38,13 @@ export const Animal = ({
 
 }: IAnimalProps) => {
 
+    const formattedLastFed = DateTime.fromISO(lastFed).toLocaleString(DateTime.DATETIME_MED);
 
     const addImageFallback = (event: SyntheticEvent<HTMLImageElement>) => {
         event.currentTarget.src = placeholderImg;
     };
 
-    const formattedLastFed = DateTime.fromISO(lastFed).toLocaleString(DateTime.DATETIME_FULL);
+
 
 
 
@@ -65,12 +66,12 @@ export const Animal = ({
                 <img src={imageUrl} alt={name} onError={addImageFallback} />
                 <p>{shortDescription}</p>
                 <p>{longDescription}</p>
-                <p>Latin name: {latinName}</p>
-                <p>Year of birth: {yearOfBirth}</p>
+                <p>Latinskt namn: {latinName}</p>
+                <p>Födelseår: {yearOfBirth}</p>
                 <p>
-                    Medicine: {medicine}
+                    Medicin: {medicine}
                 </p>
-                <p>Last fed: {formattedLastFed}</p>
+                <p>Senaste utfodring: {formattedLastFed}</p>
             </div>
             </>
         );
