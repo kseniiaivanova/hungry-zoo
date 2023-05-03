@@ -1,4 +1,5 @@
 import "../components/Animal.scss"
+import placeholderImg from "../assets/animals.jpg";
 import { SyntheticEvent } from "react";
 
 export interface IAnimal {
@@ -10,7 +11,7 @@ export interface IAnimal {
     longDescription: string,
     imageUrl: string,
     medicine: string,
-    isFed: false,
+    isFed: boolean,
     lastFed: string
 
 };
@@ -37,14 +38,14 @@ export const Animal = ({
 
 
     const addImageFallback = (event: SyntheticEvent<HTMLImageElement>) => {
-        event.currentTarget.src = "https://www.dropbox.com/s/afdbyaej47bo9oi/animals.jpg?raw=1";
+        event.currentTarget.src = placeholderImg;
     };
 
 
 
     if (fullDescription === false) {
         return (
-            <>  <div className="animal">
+            <>  <div className={isFed ? "fed" : "notFed"}>
                 <h2>{name}</h2>
                 <img src={imageUrl} alt={name} onError={addImageFallback} />
                 <p>{shortDescription}</p>
@@ -55,9 +56,9 @@ export const Animal = ({
         );
     } else {
         return (
-            <>   <div className="animal">
+            <>   <div className={isFed ? "fed" : "notFed"}>
                 <h2>{name}</h2>
-                <img src={imageUrl} alt={name} />
+                <img src={imageUrl} alt={name} onError={addImageFallback} />
                 <p>{shortDescription}</p>
                 <p>{longDescription}</p>
                 <p>Latin name: {latinName}</p>
@@ -65,6 +66,7 @@ export const Animal = ({
                 <p>
                     Medicine: {medicine}
                 </p>
+                <p>Last fed: {lastFed}</p>
             </div>
             </>
         );
