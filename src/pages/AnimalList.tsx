@@ -6,12 +6,17 @@ import { Link } from "react-router-dom";
 import { Animal } from "../components/Animal";
 
 export const AnimalList = () => {
-    const [animals, setAnimals] = useState<IAnimal[]>([]);
+    const [animals, setAnimals] = useState<IAnimal[]>(JSON.parse(localStorage.getItem('animals') || '[]'));
+
     useEffect(() => {
-        axios.get<IAnimal[]>("https://animals.azurewebsites.net/api/animals").then(response => setAnimals(response.data)).catch(error => console.log(error));
+        if (animals.length === 0) {
+            axios.get<IAnimal[]>("https://animals.azurewebsites.net/api/animals").then(response => {
+                setAnimals(response.data);
+                localStorage.setItem('animals', JSON.stringify(response.data));
+            }).catch(error => console.log(error));
+        }
     }, []);
 
-    localStorage.setItem("animals", JSON.stringify(animals));
 
 
     return (

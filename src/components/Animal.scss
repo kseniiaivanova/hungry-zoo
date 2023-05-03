@@ -1,9 +1,25 @@
-.animal {
+.notFed {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background-color: lightblue;
 
     img {
         width: 300px;
     }
 }
+
+;
+
+.fed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rosybrown;
+
+    img {
+        width: 300px;
+    }
+}
+
+;
