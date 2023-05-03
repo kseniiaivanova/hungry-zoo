@@ -9,6 +9,7 @@ import { RouterProvider } from 'react-router';
 import { createBrowserRouter } from 'react-router-dom';
 import { Animal } from './components/Animal';
 import { AnimalView } from './pages/AnimalView';
+import { Home } from "./pages/Home"
 
 const router = createBrowserRouter([
 
@@ -16,14 +17,21 @@ const router = createBrowserRouter([
 
   {
     path: "/",
-    element: <AnimalList></AnimalList>,
+    element: <Home></Home>,
     errorElement: <Error></Error>
+
+  },
+
+  {
+    path: "/animals",
+    element: <AnimalList></AnimalList>
+
 
   },
 
 
   {
-    path: "/:id",
+    path: "/animals/:id",
     element: <AnimalView></AnimalView>
 
 
