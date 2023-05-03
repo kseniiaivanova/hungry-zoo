@@ -1,6 +1,8 @@
 import "../components/Animal.scss"
 import placeholderImg from "../assets/animals.jpg";
 import { SyntheticEvent } from "react";
+import { DateTime } from 'luxon';
+
 
 export interface IAnimal {
     id: number,
@@ -41,6 +43,8 @@ export const Animal = ({
         event.currentTarget.src = placeholderImg;
     };
 
+    const formattedLastFed = DateTime.fromISO(lastFed).toLocaleString(DateTime.DATETIME_FULL);
+
 
 
     if (fullDescription === false) {
@@ -66,7 +70,7 @@ export const Animal = ({
                 <p>
                     Medicine: {medicine}
                 </p>
-                <p>Last fed: {lastFed}</p>
+                <p>Last fed: {formattedLastFed}</p>
             </div>
             </>
         );
