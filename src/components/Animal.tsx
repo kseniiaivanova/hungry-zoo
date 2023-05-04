@@ -48,6 +48,7 @@ export const Animal = ({
 
 
 
+
     if (fullDescription === false) {
         return (
             <>  <div className={isFed ? "fed" : "notFed"}>
