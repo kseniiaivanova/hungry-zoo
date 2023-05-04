@@ -26,7 +26,7 @@ export const AnimalList = () => {
             {animals.map((animal, index) => (
                 <>   <Animal {...animal}></Animal>
                     <Link key={index} to={animal.id.toString()}>
-                        <p>Lä   s mer</p>
+                        <p>Läs mer</p>
                     </Link>
 
                 </>

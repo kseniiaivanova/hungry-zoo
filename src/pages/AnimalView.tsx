@@ -4,10 +4,11 @@ import { useParams } from "react-router";
 import { useState } from "react";
 import { DateTime } from "luxon";
 
+
 export const AnimalView = () => {
 
     const params = useParams();
-    const [lastFed, setLastFed] = useState<string | null>(null);
+    const [lastFed, setLastFed] = useState<string>("");
     const [animals, setAnimals] = useState<IAnimal[]>(JSON.parse(localStorage.getItem('animals') || "[]"));
 
 
@@ -15,19 +16,23 @@ export const AnimalView = () => {
         animals.find((animal) => animal.id.toString() === params.id);
 
 
+
+
+
     const handleClick = () => {
 
         if (currentAnimal?.isFed !== undefined) {
 
-
-
             const updatedAnimals = animals.map((animal) =>
-                animal.id.toString() === params.id ? { ...animal, isFed: true } : animal
+                animal.id.toString() === params.id ? { ...animal, isFed: true, lastFed: DateTime.local().toISO() || "" } : animal
             );
 
-            setLastFed(DateTime.local().toISO());
+
             setAnimals(updatedAnimals);
 
+            const now = DateTime.local().toISO();
+            if (now)
+                setLastFed(now);
 
             localStorage.setItem('animals', JSON.stringify(updatedAnimals));
 
@@ -35,9 +40,24 @@ export const AnimalView = () => {
 
     };
 
+
+
     if (currentAnimal === undefined) {
         return <h1>Choose an animal!</h1>;
     } else {
+
+        const now = DateTime.local();
+
+        if (currentAnimal.lastFed !== null) {
+
+            const timeSinceFed = now.diff(DateTime.fromISO(lastFed || ""), "minutes").minutes;
+            console.log(timeSinceFed)
+
+
+            if (timeSinceFed >= 3) {
+                currentAnimal.isFed === false;
+            }
+        }
         return (
             <>
                 <Navbar></Navbar>
@@ -49,3 +69,4 @@ export const AnimalView = () => {
     }
 
 }
+
