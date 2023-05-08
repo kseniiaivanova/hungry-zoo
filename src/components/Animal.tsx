@@ -59,7 +59,7 @@ export const Animal = ({
         <div className={isFed ? "fed" : "notFed"}>
           <h2>{name}</h2>
           <img src={imageUrl} alt={name} onError={addImageFallback} />
-          <p>{shortDescription}</p>
+          <p className="shortDesc">{shortDescription}</p>
           <p>{longDescription}</p>
           <p>Latinskt namn: {latinName}</p>
           <p>Födelseår: {yearOfBirth}</p>
