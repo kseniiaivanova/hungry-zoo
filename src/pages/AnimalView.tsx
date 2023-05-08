@@ -19,7 +19,7 @@ export const AnimalView = () => {
 
 
 
-    const handleClick = () => {
+    const feedAnimal = () => {
 
         if (currentAnimal?.isFed !== undefined) {
 
@@ -46,24 +46,13 @@ export const AnimalView = () => {
         return <h1>Choose an animal!</h1>;
     } else {
 
-        const now = DateTime.local();
-
-        if (currentAnimal.lastFed !== null) {
-
-            const timeSinceFed = now.diff(DateTime.fromISO(lastFed || ""), "minutes").minutes;
-            console.log(timeSinceFed)
-
-
-            if (timeSinceFed >= 3) {
-                currentAnimal.isFed === false;
-            }
-        }
+       
         return (
             <>
                 <Navbar></Navbar>
 
                 <Animal {...currentAnimal} fullDescription={true} lastFed={lastFed || currentAnimal.lastFed}></Animal>
-                <button onClick={handleClick} disabled={currentAnimal.isFed}>Mata mig!</button>
+                <button onClick={feedAnimal} disabled={currentAnimal.isFed}>Mata mig!</button>
             </>
         );
     }
