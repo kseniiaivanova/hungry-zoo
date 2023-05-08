@@ -14,6 +14,8 @@ export const AnimalList = () => {
                 setAnimals(response.data);
                 localStorage.setItem('animals', JSON.stringify(response.data));
             }).catch(error => console.log(error));
+
+
         }
     }, []);
 
@@ -23,11 +25,14 @@ export const AnimalList = () => {
         <>
             <Navbar></Navbar>
 
-            {animals.map((animal, index) => (
-                <>   <Animal {...animal}></Animal>
-                    <Link key={index} to={animal.id.toString()}>
+            {animals.map((animal) => (
+                <>
+                    <Link key={animal.id} to={animal.id.toString()}>
+                        <Animal {...animal}></Animal>
                         <p>Läs mer</p>
+
                     </Link>
+
 
                 </>
             ))}

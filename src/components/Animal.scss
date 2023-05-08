@@ -5,7 +5,11 @@
     background-color: lightblue;
 
     img {
+
         width: 300px;
+        height: 200px;
+        object-fit: contain;
+
     }
 }
 
@@ -18,7 +22,11 @@
     background-color: rgb(136, 234, 136);
 
     img {
+
         width: 300px;
+        height: 200px;
+        object-fit: contain;
+
     }
 }
 
