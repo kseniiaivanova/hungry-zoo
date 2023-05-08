@@ -29,6 +29,7 @@ nav {
   background-color: var.$primarycolor;
   height: 5em;
   display: flex;
+  margin-bottom: 1em;
 
   ul {
     
@@ -51,10 +52,12 @@ nav {
   }
 }
 
-listWrapper{
+.listWrapper {
   width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content: space-evenly;
+  
+  flex-wrap: wrap;
 }
 
 .mainWrapper {
@@ -70,11 +73,12 @@ listWrapper{
 a {
   font-weight: 500;
   color: black;
+  
 
   text-decoration: none;
 }
 a:hover {
-  color: #f25370;
+  color: var.$primarycolor;
 }
 
 
@@ -87,5 +91,26 @@ h1 {
 
 
 .cover {
-  width: 50%;
+  padding: 1em;
+  width: 400px;
+}
+
+
+.shortDesc {
+  display: flex;
+}
+
+.showAnimal {
+  width: 40%;
+  
+}
+
+
+.showingMore {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
 }

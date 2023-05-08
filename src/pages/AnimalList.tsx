@@ -23,19 +23,20 @@ export const AnimalList = () => {
   }, []);
 
   return (
-    <> <div className="listWrapper">
+    <>
       <Navbar></Navbar>
+      <h1>Djuren</h1>
+      <div className="listWrapper">
+        {animals.map((animal) => (
+  <div className="showAnimal" key={animal.id}>
+    <Animal {...animal} />
+    <Link to={animal.id.toString()}>
+      <p className="more">Läs mer</p>
+    </Link>
+  </div>
+))}
 
-      {animals.map((animal) => (
-        <> 
-          <Link key={animal.id} to={animal.id.toString()}>
-            <Animal {...animal}></Animal>
-            <p className="more">Läs mer</p>
-              </Link>
-              
-        </>
-      ))}
-          </div>
+      </div>
     </>
   );
 };

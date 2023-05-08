@@ -38,15 +38,16 @@ export const AnimalView = () => {
     return (
       <>
         <Navbar></Navbar>
-
+        <div className="showingMore">
         <Animal
           {...currentAnimal}
           fullDescription={true}
           lastFed={lastFed || currentAnimal.lastFed}
         ></Animal>
-        <button onClick={feedAnimal} disabled={currentAnimal.isFed}>
+        <button className="feed" onClick={feedAnimal} disabled={currentAnimal.isFed}>
           Mata mig!
-        </button>
+                </button>
+                </div>
       </>
     );
   }
